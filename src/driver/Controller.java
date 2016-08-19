@@ -1,8 +1,8 @@
 package driver;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import legends.LegendHandler;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -10,10 +10,10 @@ import java.util.ResourceBundle;
 public class Controller {
 
     @FXML
-    private TextField inputText;
+    private ChoiceBox choiceBox;
 
     @FXML
-    private TextArea outputText;
+    private Label gamesLabel;
 
     @FXML
     private URL location;
@@ -21,18 +21,26 @@ public class Controller {
     @FXML
     private ResourceBundle resources;
 
+    LegendHandler legendHandler = new LegendHandler();
+
     public Controller() {
 
     }
 
     @FXML
     private void initialize() {
+        //TODO add legends to choicebox
+        //choiceBox.setItems(legendHandler.getLegends());
+    }
+
+    @FXML
+    private void addGame() {
 
     }
 
     @FXML
-    private void printOutput() {
-        outputText.setText(inputText.getText());
+    private void subtractGame() {
+
     }
 
 }
