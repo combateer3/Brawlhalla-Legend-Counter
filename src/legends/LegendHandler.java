@@ -16,7 +16,7 @@ import java.util.List;
 public class LegendHandler {
 
     private List<String> legendArray = new ArrayList<String>();
-    private HashMap<String, Integer> legendMap;
+    private HashMap<String, Integer> legendGames = new HashMap<String, Integer>();
 
     public LegendHandler() {
         try {
@@ -30,9 +30,18 @@ public class LegendHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        //default games to 0
+        for (String legend : legendArray) {
+            legendGames.put(legend, 0);
+        }
     }
 
     public ObservableList<String> getLegends() {
         return FXCollections.observableArrayList(legendArray);
+    }
+
+    public HashMap<String, Integer> getLegendGames() {
+        return legendGames;
     }
 }

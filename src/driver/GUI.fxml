@@ -7,8 +7,8 @@
 <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="50.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="driver.Controller">
    <children>
       <ChoiceBox fx:id="choiceBox" prefWidth="150.0" />
-      <Button fx:id="addButton" mnemonicParsing="false" text="+" />
-      <Button fx:id="subtractButton" mnemonicParsing="false" text="-" />
+      <Button fx:id="addButton" mnemonicParsing="false" onAction="#addGame" text="+" />
+      <Button fx:id="subtractButton" mnemonicParsing="false" onAction="#subtractGame" text="-" />
       <Label fx:id="gamesLabel" text="0 Games played" />
    </children>
 </HBox>

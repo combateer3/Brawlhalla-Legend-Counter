@@ -1,12 +1,10 @@
 package driver;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import legends.LegendHandler;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class Controller {
 
@@ -24,19 +22,44 @@ public class Controller {
 
     @FXML
     private void initialize() {
-        //System.out.println("hi");
         choiceBox.setItems(legendHandler.getLegends());
         choiceBox.setValue(legendHandler.getLegends().get(0));
+
+        choiceBox.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                updateLabel((int) newValue);
+            }
+        });
     }
 
     @FXML
     private void addGame() {
-
+        String currentLegend = (String) choiceBox.getValue();
+        int games = legendHandler.getLegendGames().get(currentLegend);
+        games += 1;
+        legendHandler.getLegendGames().put(currentLegend, games);
+        updateLabel(currentLegend);
     }
 
     @FXML
     private void subtractGame() {
+        String currentLegend = (String) choiceBox.getValue();
+        int games = legendHandler.getLegendGames().get(currentLegend);
+        games -= 1;
+        legendHandler.getLegendGames().put(currentLegend, games);
+        updateLabel(currentLegend);
+    }
 
+    private void updateLabel(int index) {
+        String currentLegend = legendHandler.getLegends().get(index);
+        int games = legendHandler.getLegendGames().get(currentLegend);
+        gamesLabel.setText(games + " Games played");
+    }
+
+    private void updateLabel(String currentLegend) {
+        int games = legendHandler.getLegendGames().get(currentLegend);
+        gamesLabel.setText(games + " Games played");
     }
 
 }
