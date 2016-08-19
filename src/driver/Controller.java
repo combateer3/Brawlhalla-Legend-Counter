@@ -31,6 +31,9 @@ public class Controller {
                 updateLabel((int) newValue);
             }
         });
+
+        //intial update since default selection isn't a change
+        updateLabel(choiceBox.getValue().toString());
     }
 
     @FXML

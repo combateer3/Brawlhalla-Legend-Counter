@@ -14,7 +14,7 @@ public class Main extends Application {
 
         Scene scene = new Scene(root);
 
-        primaryStage.setTitle("Test");
+        primaryStage.setTitle("Brawlhalla Legend Counter");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

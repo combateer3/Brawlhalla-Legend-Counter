@@ -1,25 +1,25 @@
-Bodvar
-Cassidy
-Orion
-Lord Vraxx
-Gnash
-Queen Nai
-Hattori
-Sir Roland
-Scarlet
-Thatch
-Ada
-Sentinel
-Lucien
-Teros
-Brynn
-Asuri
-Barraza
-Ember
-Azoth
-Koji
-Ulgrim
-Diana
-Jhala
-Kor
-Wu Shang
+Bodvar 1
+Cassidy 0
+Orion 0
+Lord Vraxx 0
+Gnash 0
+Queen Nai 0
+Hattori 5
+Sir Roland 0
+Scarlet 0
+Thatch 0
+Ada 0
+Sentinel 0
+Lucien 0
+Teros 0
+Brynn 0
+Asuri 0
+Barraza 0
+Ember 0
+Azoth 0
+Koji 0
+Ulgrim 0
+Diana 0
+Jhala 0
+Kor 0
+Wu Shang 0
