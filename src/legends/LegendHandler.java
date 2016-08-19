@@ -1,5 +1,8 @@
 package legends;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.FileReader;
@@ -12,24 +15,24 @@ import java.util.List;
  */
 public class LegendHandler {
 
-    private List<String> legends = new ArrayList<String>();
+    private List<String> legendArray = new ArrayList<String>();
     private HashMap<String, Integer> legendMap;
 
     public LegendHandler() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("src/legends/legends.txt"));
-            String line = reader.readLine();
-            if (line != null) {
-                legends.add(line);
-            } else {
-                reader.close();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                legendArray.add(line);
             }
+            reader.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public List<String> getLegends() {
-        return legends;
+    public ObservableList<String> getLegends() {
+        return FXCollections.observableArrayList(legendArray);
     }
 }
