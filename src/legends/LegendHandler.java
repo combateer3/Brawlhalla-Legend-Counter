@@ -16,9 +16,12 @@ public class LegendHandler {
     private static List<String> legendArray = new ArrayList<String>();
     private static HashMap<String, Integer> legendGames = new HashMap<String, Integer>();
 
+    private static File file;
+
     public static void init() {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("src/legends/legends.txt"));
+            file = new File("src/legends/legends.txt");
+            BufferedReader reader = new BufferedReader(new FileReader(file));
             String line;
             while ((line = reader.readLine()) != null) {
                 //split legends and games
@@ -42,7 +45,7 @@ public class LegendHandler {
 
     public static void saveGames() {
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("src/legends/legends.txt"));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
 
             for (String legend : legendArray) {
                 int games = legendGames.get(legend);

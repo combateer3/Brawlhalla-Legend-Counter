@@ -41,6 +41,7 @@ public class Controller {
         String currentLegend = (String) choiceBox.getValue();
         int games = LegendHandler.getLegendGames().get(currentLegend);
         games += 1;
+
         LegendHandler.getLegendGames().put(currentLegend, games);
         updateLabel(currentLegend);
     }
@@ -50,6 +51,7 @@ public class Controller {
         String currentLegend = (String) choiceBox.getValue();
         int games = LegendHandler.getLegendGames().get(currentLegend);
         games -= 1;
+
         LegendHandler.getLegendGames().put(currentLegend, games);
         updateLabel(currentLegend);
     }

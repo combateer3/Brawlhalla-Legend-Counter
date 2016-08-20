@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Brawlhalla Legend Counter:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Brawlhalla_Legend_Counter_jar</output-path>
+    <root id="archive" name="Brawlhalla Legend Counter.jar">
+      <element id="module-output" name="Brawlhalla Legend Counter" />
+    </root>
+  </artifact>
+</component>
