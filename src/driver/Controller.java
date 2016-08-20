@@ -14,7 +14,7 @@ public class Controller {
     @FXML
     private Label gamesLabel;
 
-    LegendHandler legendHandler = new LegendHandler();
+    private LegendHandler legendHandler = new LegendHandler();
 
     public Controller() {
 
@@ -32,7 +32,7 @@ public class Controller {
             }
         });
 
-        //intial update since default selection isn't a change
+        //initial update since default selection isn't a change
         updateLabel(choiceBox.getValue().toString());
     }
 
@@ -52,6 +52,11 @@ public class Controller {
         games -= 1;
         legendHandler.getLegendGames().put(currentLegend, games);
         updateLabel(currentLegend);
+    }
+
+    @FXML
+    private void saveGames() {
+        legendHandler.saveGames();
     }
 
     private void updateLabel(int index) {

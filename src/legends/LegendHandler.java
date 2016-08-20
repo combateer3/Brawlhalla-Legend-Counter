@@ -3,9 +3,7 @@ package legends;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,6 +35,21 @@ public class LegendHandler {
             }
             reader.close();
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void saveGames() {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("src/legends/legends.txt"));
+
+            for (String legend : legendArray) {
+                int games = legendGames.get(legend);
+                String line = legend + games + "\n";
+                writer.write(line);
+            }
+            writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
