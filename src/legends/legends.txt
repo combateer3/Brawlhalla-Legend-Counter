@@ -1,10 +1,10 @@
-Bodvar 5
-Cassidy 2
+Bodvar 0
+Cassidy 0
 Orion 0
 Lord Vraxx 0
 Gnash 0
 Queen Nai 0
-Hattori 5
+Hattori 0
 Sir Roland 0
 Scarlet 0
 Thatch 0

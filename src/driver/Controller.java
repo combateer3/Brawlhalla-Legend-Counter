@@ -56,7 +56,10 @@ public class Controller {
 
     @FXML
     private void clearGames() {
-        //TODO clear games
+        for (String legend : LegendHandler.getLegends()) {
+            LegendHandler.getLegendGames().put(legend, 0);
+            updateLabel(legend);
+        }
     }
 
     private void updateLabel(int index) {
