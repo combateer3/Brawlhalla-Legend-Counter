@@ -20,7 +20,8 @@ public class LegendHandler {
 
     public LegendHandler() {
         try {
-            file = new File("legends.dat");
+            file = new File("data/legends.dat");
+
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
 
             legendArray = (List<String>) ois.readObject();
@@ -51,7 +52,7 @@ public class LegendHandler {
 
     private void readFromTextFile() {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("legends.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("data/legends.txt"));
             String line;
 
             while ((line = reader.readLine()) != null) {
