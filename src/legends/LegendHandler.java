@@ -13,56 +13,69 @@ import java.util.List;
  */
 public class LegendHandler {
 
-    private static List<String> legendArray = new ArrayList<String>();
-    private static HashMap<String, Integer> legendGames = new HashMap<String, Integer>();
+    private List<String> legendArray;
+    private HashMap<String, Integer> legendGames;
 
-    private static File file;
+    private File file;
 
-    public static void init() {
+    public LegendHandler() {
         try {
-            file = new File("src/legends/legends.txt");
-            BufferedReader reader = new BufferedReader(new FileReader(file));
+            file = new File("legends.dat");
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
+
+            legendArray = (List<String>) ois.readObject();
+            legendGames = (HashMap<String, Integer>) ois.readObject();
+
+            ois.close();
+        } catch (EOFException e) {
+            legendArray = new ArrayList<>();
+            legendGames = new HashMap<>();
+
+            readFromTextFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void saveGames() {
+        try {
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
+            oos.writeObject(legendArray);
+            oos.writeObject(legendGames);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void readFromTextFile() {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("legends.txt"));
             String line;
+
             while ((line = reader.readLine()) != null) {
-                //split legends and games
                 String[] split = line.split(" ");
 
-                //get legend name (for names with more than one word)
-                String legend = "";
+                String name = "";
                 for (int i = 0; i < split.length - 1; i++) {
-                    legend += split[i] + " ";
+                    name += split[i] + " ";
                 }
 
-                legendArray.add(legend);
-                legendGames.put(legend, Integer.parseInt(split[split.length - 1]));
+                legendArray.add(name);
+                legendGames.put(name, Integer.parseInt(split[split.length - 1]));
             }
             reader.close();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static void saveGames() {
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-
-            for (String legend : legendArray) {
-                int games = legendGames.get(legend);
-                String line = legend + games + "\n";
-                writer.write(line);
-            }
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static ObservableList<String> getLegends() {
+    public ObservableList<String> getLegends() {
         return FXCollections.observableArrayList(legendArray);
     }
 
-    public static HashMap<String, Integer> getLegendGames() {
+    public HashMap<String, Integer> getLegendGames() {
         return legendGames;
     }
 }

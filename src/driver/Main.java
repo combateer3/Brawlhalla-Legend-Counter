@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import legends.LegendHandler;
 
 public class Main extends Application {
 
@@ -22,7 +21,7 @@ public class Main extends Application {
 
     @Override
     public void stop() {
-        LegendHandler.saveGames();
+        Controller.getLegendHandler().saveGames();
     }
 
 
