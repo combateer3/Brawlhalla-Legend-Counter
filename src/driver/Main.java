@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import legends.LegendHandler;
 
 public class Main extends Application {
 
@@ -17,6 +18,11 @@ public class Main extends Application {
         primaryStage.setTitle("Brawlhalla Legend Counter");
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    @Override
+    public void stop() {
+        LegendHandler.saveGames();
     }
 
 

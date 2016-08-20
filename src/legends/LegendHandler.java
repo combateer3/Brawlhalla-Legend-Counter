@@ -13,10 +13,10 @@ import java.util.List;
  */
 public class LegendHandler {
 
-    private List<String> legendArray = new ArrayList<String>();
-    private HashMap<String, Integer> legendGames = new HashMap<String, Integer>();
+    private static List<String> legendArray = new ArrayList<String>();
+    private static HashMap<String, Integer> legendGames = new HashMap<String, Integer>();
 
-    public LegendHandler() {
+    public static void init() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("src/legends/legends.txt"));
             String line;
@@ -40,7 +40,7 @@ public class LegendHandler {
         }
     }
 
-    public void saveGames() {
+    public static void saveGames() {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter("src/legends/legends.txt"));
 
@@ -55,11 +55,11 @@ public class LegendHandler {
         }
     }
 
-    public ObservableList<String> getLegends() {
+    public static ObservableList<String> getLegends() {
         return FXCollections.observableArrayList(legendArray);
     }
 
-    public HashMap<String, Integer> getLegendGames() {
+    public static HashMap<String, Integer> getLegendGames() {
         return legendGames;
     }
 }

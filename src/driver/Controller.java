@@ -14,16 +14,16 @@ public class Controller {
     @FXML
     private Label gamesLabel;
 
-    private LegendHandler legendHandler = new LegendHandler();
-
     public Controller() {
 
     }
 
     @FXML
     private void initialize() {
-        choiceBox.setItems(legendHandler.getLegends());
-        choiceBox.setValue(legendHandler.getLegends().get(0));
+        LegendHandler.init();
+
+        choiceBox.setItems(LegendHandler.getLegends());
+        choiceBox.setValue(LegendHandler.getLegends().get(0));
 
         choiceBox.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
@@ -39,34 +39,34 @@ public class Controller {
     @FXML
     private void addGame() {
         String currentLegend = (String) choiceBox.getValue();
-        int games = legendHandler.getLegendGames().get(currentLegend);
+        int games = LegendHandler.getLegendGames().get(currentLegend);
         games += 1;
-        legendHandler.getLegendGames().put(currentLegend, games);
+        LegendHandler.getLegendGames().put(currentLegend, games);
         updateLabel(currentLegend);
     }
 
     @FXML
     private void subtractGame() {
         String currentLegend = (String) choiceBox.getValue();
-        int games = legendHandler.getLegendGames().get(currentLegend);
+        int games = LegendHandler.getLegendGames().get(currentLegend);
         games -= 1;
-        legendHandler.getLegendGames().put(currentLegend, games);
+        LegendHandler.getLegendGames().put(currentLegend, games);
         updateLabel(currentLegend);
     }
 
     @FXML
-    private void saveGames() {
-        legendHandler.saveGames();
+    private void clearGames() {
+        //TODO clear games
     }
 
     private void updateLabel(int index) {
-        String currentLegend = legendHandler.getLegends().get(index);
-        int games = legendHandler.getLegendGames().get(currentLegend);
+        String currentLegend = LegendHandler.getLegends().get(index);
+        int games = LegendHandler.getLegendGames().get(currentLegend);
         gamesLabel.setText(games + " Games played");
     }
 
     private void updateLabel(String currentLegend) {
-        int games = legendHandler.getLegendGames().get(currentLegend);
+        int games = LegendHandler.getLegendGames().get(currentLegend);
         gamesLabel.setText(games + " Games played");
     }
 

@@ -20,7 +20,7 @@
             </HBox>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button alignment="CENTER" layoutX="202.0" layoutY="68.0" mnemonicParsing="false" onAction="#saveGames" prefHeight="65.0" prefWidth="98.0" text="Save" textFill="#270fbf" />
+                  <Button alignment="CENTER" layoutX="202.0" layoutY="68.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="98.0" text="Clear Games" textFill="#270fbf" />
                </children>
             </Pane>
          </children>
