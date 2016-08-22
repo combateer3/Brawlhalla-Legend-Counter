@@ -3,10 +3,16 @@ package driver;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import legends.LegendHandler;
 
-public class Controller {
+import java.io.IOException;
+
+public class MainController {
 
     @FXML
     private ChoiceBox choiceBox;
@@ -16,13 +22,13 @@ public class Controller {
 
     private static LegendHandler legendHandler;
 
-    public Controller() {
+    public MainController() {
 
     }
 
     @FXML
     private void initialize() {
-        legendHandler = new LegendHandler();
+        legendHandler = Main.getLegendHandler();
 
         choiceBox.setItems(legendHandler.getLegends());
         choiceBox.setValue(legendHandler.getLegends().get(0));
@@ -52,10 +58,14 @@ public class Controller {
     private void subtractGame() {
         String currentLegend = (String) choiceBox.getValue();
         int games = legendHandler.getLegendGames().get(currentLegend);
-        games -= 1;
 
-        legendHandler.getLegendGames().put(currentLegend, games);
-        updateLabel(currentLegend);
+        //can't go below zero
+        if (games > 0){
+            games -= 1;
+
+            legendHandler.getLegendGames().put(currentLegend, games);
+            updateLabel(currentLegend);
+        }
     }
 
     @FXML
@@ -63,6 +73,22 @@ public class Controller {
         for (String legend : legendHandler.getLegends()) {
             legendHandler.getLegendGames().put(legend, 0);
             updateLabel(legend);
+        }
+    }
+
+    @FXML
+    private void openPieChart() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/pieChart/pieChart.fxml"));
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+
+            stage.setTitle("Pie Chart");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -75,9 +101,5 @@ public class Controller {
     private void updateLabel(String currentLegend) {
         int games = legendHandler.getLegendGames().get(currentLegend);
         gamesLabel.setText(games + " Games played");
-    }
-
-    public static LegendHandler getLegendHandler() {
-        return legendHandler;
     }
 }

@@ -5,11 +5,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import legends.LegendHandler;
 
 public class Main extends Application {
 
+    private static LegendHandler legendHandler;
+
     @Override
     public void start(Stage primaryStage) throws Exception{
+        legendHandler = new LegendHandler();
+
         Parent root = FXMLLoader.load(getClass().getResource("GUI.fxml"));
 
         Scene scene = new Scene(root);
@@ -21,9 +26,12 @@ public class Main extends Application {
 
     @Override
     public void stop() {
-        Controller.getLegendHandler().saveGames();
+        legendHandler.saveGames();
     }
 
+    public static LegendHandler getLegendHandler() {
+        return legendHandler;
+    }
 
     public static void main(String[] args) {
         launch(args);

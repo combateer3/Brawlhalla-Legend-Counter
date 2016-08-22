@@ -4,8 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="driver.Controller">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="driver.MainController">
    <children>
       <VBox layoutX="100.0">
          <children>
@@ -18,11 +17,20 @@
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" />
                </children>
             </HBox>
-            <Pane prefHeight="200.0" prefWidth="200.0">
+            <HBox prefHeight="100.0" prefWidth="538.0">
                <children>
-                  <Button alignment="CENTER" layoutX="202.0" layoutY="68.0" mnemonicParsing="false" onAction="#clearGames" prefHeight="65.0" prefWidth="98.0" text="Clear Games" textFill="#270fbf" />
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#clearGames" prefHeight="65.0" prefWidth="98.0" text="Clear Games" textFill="#270fbf" />
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#openPieChart" prefHeight="65.0" prefWidth="98.0" text="Open Pie Chart" textFill="#270fbf" />
+                     </children>
+                  </Pane>
                </children>
-            </Pane>
+            </HBox>
          </children>
       </VBox>
    </children>
