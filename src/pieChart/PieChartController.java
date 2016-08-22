@@ -49,7 +49,10 @@ public class PieChartController {
             for (String legend : legendHandler.getLegends()) {
                 float games = legendHandler.getLegendGames().get(legend);
                 float percent = (games / total) * 100;
-                data.add(new PieChart.Data(legend, games / total));
+
+                if (percent != 0) {
+                    data.add(new PieChart.Data(legend, games / total));
+                }
             }
         }
 
