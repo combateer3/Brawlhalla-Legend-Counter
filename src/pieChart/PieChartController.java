@@ -36,7 +36,7 @@ public class PieChartController {
         ArrayList<PieChart.Data> data = new ArrayList<>();
 
         //convert games into percentages
-        int total = 0;
+        float total = 0;
 
         for (int games : legendHandler.getLegendGames().values()) {
             total += games;
@@ -47,7 +47,8 @@ public class PieChartController {
             throw new ArithmeticException("Can't divide by zero");
         } else {
             for (String legend : legendHandler.getLegends()) {
-                int games = legendHandler.getLegendGames().get(legend);
+                float games = legendHandler.getLegendGames().get(legend);
+                float percent = (games / total) * 100;
                 data.add(new PieChart.Data(legend, games / total));
             }
         }
